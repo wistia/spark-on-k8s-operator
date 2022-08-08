@@ -55,9 +55,6 @@ spec:
           - name: {{ .Values.metrics.portName | quote }}
             containerPort: {{ .Values.metrics.port }}
         {{- end }}
-        env:
-          - name: TOMTEST
-            value: hello
         {{- if .Values.awsCredsFromSecrets }}
         env:
           - name: AWS_ACCESS_KEY_ID
