@@ -69,7 +69,7 @@ spec:
                 key: spark_aws_secret_access_key
                 name: {{ .Values.awsCredsSecretName }}
                 optional: false
-        {{- end}}
+        {{- end }}
         args:
         - -v={{ .Values.logLevel }}
         - -logtostderr
