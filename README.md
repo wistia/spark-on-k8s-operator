@@ -1,3 +1,10 @@
+### Changes to forked repo: 
+
+- Added `host-network: bool` to allow enabling `mutating webhooks` (a limitation of our calico CNI). Mutating webooks are required to pass environment variables to spark driver and executor pods using sparkApplication. 
+- Allow passing AWS creds as environment variables to the spark-operator pods. (Necessary to allow spark-operator to access S3 files)
+
+### Original content
+
 [![Go Report Card](https://goreportcard.com/badge/github.com/GoogleCloudPlatform/spark-on-k8s-operator)](https://goreportcard.com/report/github.com/GoogleCloudPlatform/spark-on-k8s-operator)
 
 **This is not an officially supported Google product.**
