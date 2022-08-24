@@ -54,7 +54,22 @@ spec:
         ports:
           - name: {{ .Values.metrics.portName | quote }}
             containerPort: {{ .Values.metrics.port }}
-        {{ end }}
+        {{- end }}
+        {{- if .Values.awsCredsFromSecrets }}
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                key: spark_aws_access_key_id
+                name: {{ .Values.awsCredsSecretName }}
+                optional: false
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                key: spark_aws_secret_access_key
+                name: {{ .Values.awsCredsSecretName }}
+                optional: false
+        {{- end }}
         args:
         - -v={{ .Values.logLevel }}
         - -logtostderr
